@@ -1,7 +1,7 @@
 import ky from 'ky';
-import { MenuItem, Restaurant } from './models';
+import { MenuItem, Restaurant } from './Models';
 
-class apiService {
+class ApiService {
   URL = 'https://foodfindernetapi.azurewebsites.net';
   cuisines = ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
   restCuisine = '';
@@ -20,9 +20,13 @@ class apiService {
   }
 
   async getRestaurants() {
-    // TODO
+    const data = await ky.get(`${this.URL}/restaurants`).json();
+    this.restaurants = data.map(restaurant => {
+      const { RestName, Cuisine, City, Grade, Rating } = restaurant;
+      return new Restaurant(RestName, Cuisine, City, Grade, Rating);
+    });
+    return this.restaurants;
   }
-
 }
 
-export default apiService;
+export default new ApiService();
