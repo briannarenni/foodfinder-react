@@ -1,39 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { Restaurant, cuisines, cities } from '../_services/Models';
+import { Restaurant, cuisines, cities, sortOptions } from '../_services/Models';
 import { NavbarView } from './NavbarView.jsx';
 
 // ! restaurants undefined
 function Navbar({ restaurants, setCurrTableList }) {
-  const [propState, setPropState] = useState({
-    cuisines: [],
-    cities: [],
-    sortOptions: [],
-  });
+  // state for cuisines, cities, and sortOptions
+  const [cuisinesState, setCuisines] = useState(cuisines);
+  const [citiesState, setCities] = useState(cities);
+  const [sortOptionsState, setSortOptions] = useState(sortOptions);
 
+  // state for selected filter options
   const [filterState, setFilterState] = useState({
     selectedCuisine: '',
     selectedCity: '',
-    isDesc: false,
-    selectedSortOption: '',
+    selectedSortOption: 'Name',
   });
 
-  const [filterChanged, setFilterChanged] = useState(false);
-
+  // set initial state of cuisines, cities, and sortOptions
   useEffect(() => {
-    setPropState({ ...propState, cuisines: restaurants.map(restaurant => restaurant.Cuisine) });
-    setPropState({ ...propState, cities: restaurants.map(restaurant => restaurant.City) });
-    setPropState({ ...propState, sortOptions: ['Name', 'Highest Rating', 'Lowest Rating'] });
-    setFilterState({ ...filterState, selectedSortOption: propState.sortOptions[0] });
-    filterChanged && setFilterState({ ...filterState, selectedSortOption: 'Name' });
-  }, [filterChanged, propState, filterState]);
+    setCuisines(cuisines);
+    setCities(cities);
+    setSortOptions(sortOptions);
+  }, []);
 
   const clearFilters = () => {
-    setFilterState(prevFilterState => ({
-      ...prevFilterState,
+    setFilterState({
       selectedCuisine: '',
       selectedCity: '',
       selectedSortOption: 'Name',
-    }));
+    });
     setCurrTableList([...restaurants]);
   }
 
@@ -42,40 +37,62 @@ function Navbar({ restaurants, setCurrTableList }) {
       ...prevFilterState,
       selectedSortOption: sortOption,
     }));
+    let currTableListState = [...restaurants];
     if (sortOption === 'Highest Rating') {
-      props.currTableList.sort((a, b) => b.Rating - a.Rating);
+      currTableListState.sort((a, b) => b.Rating - a.Rating);
     } else if (sortOption === 'Lowest Rating') {
-      props.currTableList.sort((a, b) => a.Rating - b.Rating);
+      currTableListState.sort((a, b) => a.Rating - b.Rating);
     } else {
-      props.currTableList.sort((a, b) => {
+      currTableListState.sort((a, b) => {
         if (a.RestName < b.RestName) return -1;
         if (a.RestName > b.RestName) return 1;
         return 0;
       });
     }
-    setCurrTableList([...props.currTableList]);
+    setCurrTableList([...currTableListState]);
   }
 
-  const filterTable = (type, value) => {
+  const handleSelectedCuisine = (cuisine) => {
+    setFilterState(prevFilterState => ({
+      ...prevFilterState,
+      selectedCuisine: cuisine,
+    }));
+    if (restaurants) {
+      filterTable();
+    }
+  }
+
+  const handleSelectedCity = (city) => {
+    setFilterState(prevFilterState => ({
+      ...prevFilterState,
+      selectedCity: city,
+    }));
+    if (restaurants) {
+      filterTable();
+    }
+  }
+
+  const filterTable = () => {
     let filteredList = [...restaurants];
 
-    if (filterState[`selected${type}`] === value) {
-      setFilterState(prevFilterState => ({ ...prevFilterState, [`selected${type}`]: '' }));
+    if (filterState[`selectedCuisine`]) {
+      filteredList = filteredList.filter(restaurant => restaurant.Cuisine === filterState[`selectedCuisine`]);
+    }
+
+    if (filterState[`selectedCity`]) {
+      filteredList = filteredList.filter(restaurant => restaurant.City === filterState[`selectedCity`]);
+    }
+
+    if (filteredList.length === 0) {
+      setCurrTableList([]);
     } else {
-      setFilterState(prevFilterState => ({ ...prevFilterState, [`selected${type}`]: value }));
+      setCurrTableList(filteredList);
     }
-
-    if (filterState[`selected${type}`]) {
-      filteredList = filteredList.filter(restaurant => restaurant[type] === filterState[`selected${type}`]);
-    }
-
-    setCurrTableList(filteredList);
   }
 
-  const props = { clearFilters, sortTable, filterTable, propState, filterState };
+  const props = { clearFilters, sortTable, filterTable, cuisines, cities, sortOptions, filterState, handleSelectedCuisine, handleSelectedCity };
 
   return <NavbarView {...props} />;
-
 }
 
 export default Navbar;

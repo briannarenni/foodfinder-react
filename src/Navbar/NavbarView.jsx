@@ -1,8 +1,7 @@
 import React from 'react';
 
 export const NavbarView = (props) => {
-  const { clearFilters, sortTable, filterTable, propState, filterState } = props;
-  const { cuisines, cities, sortOptions } = propState;
+  const { clearFilters, sortTable, filterTable, cuisines, cities, sortOptions, filterState, handleSelectedCuisine, handleSelectedCity } = props;
   const { selectedCuisine, selectedCity, selectedSortOption } = filterState;
 
   return (
@@ -11,45 +10,49 @@ export const NavbarView = (props) => {
         <div className="btn-group">
           <div data-bs-toggle="dropdown" className="d-inline-block">
             <div className="d-inline-block">
-              <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle px-2 mx-1">
-                {selectedCuisine ? selectedCuisine : 'Filter Cuisine'}
+              <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle px-4" type="button">
+                Filter Cuisine: {filterState.selectedCuisine}
               </button>
               <ul className="dropdown-menu dropdown-menu-dark text-center">
-
                 {cuisines.map((cuisine) => (
                   <li key={cuisine}>
                     <button
-                      className={`dropdown-item ${selectedCuisine === cuisine ? 'active' : ''}`}
-                      onClick={() => filterTable('cuisine', cuisine)}>
+                      className={`dropdown-item ${filterState.selectedCuisine === cuisine ? 'active' : ''}`}
+                      onClick={() => {
+                        handleSelectedCuisine(cuisine);
+                        filterTable();
+                      }}>
                       {cuisine}
                     </button>
                   </li>
                 ))}
-
               </ul>
             </div>
+
           </div>
         </div>
 
         <div className="btn-group p-1">
           <div data-bs-toggle="dropdown" className="d-inline-block">
-            <button id="city-btn" className="btn btn-outline-info dropdown-toggle px-2">
-              {selectedCity ? selectedCity : 'Filter City'}
+            <button id="city-btn" className="btn btn-outline-info dropdown-toggle px-4" type="button">
+              Filter City: {filterState.selectedCity}
             </button>
             <ul className="dropdown-menu dropdown-menu-dark text-center">
-
               {cities.map((city) => (
                 <li key={city}>
                   <button
-                    className={`dropdown-item ${selectedCity === city ? 'active' : ''}`}
-                    onClick={() => filterTable('city', city)}>
+                    className={`dropdown-item ${filterState.selectedCity === city ? 'active' : ''}`}
+                    onClick={() => {
+                      handleSelectedCity(city);
+                      filterTable();
+                    }}>
                     {city}
                   </button>
                 </li>
               ))}
-
             </ul>
           </div>
+
         </div >
 
         {/* Clear Filters */}
