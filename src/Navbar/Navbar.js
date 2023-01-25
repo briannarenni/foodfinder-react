@@ -1,12 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Restaurant, cuisines, cities } from '../_services/Models';
 import { NavbarView } from './NavbarView.jsx';
 
 // ! restaurants undefined
-
-function Navbar({ restaurants, currTableList }) {
-  const [currTableListState, setCurrTableList] = useState(currTableList);
-
+function Navbar({ restaurants, setCurrTableList }) {
   const [propState, setPropState] = useState({
     cuisines: [],
     cities: [],
@@ -30,7 +27,6 @@ function Navbar({ restaurants, currTableList }) {
     filterChanged && setFilterState({ ...filterState, selectedSortOption: 'Name' });
   }, [filterChanged, propState, filterState]);
 
-
   const clearFilters = () => {
     setFilterState(prevFilterState => ({
       ...prevFilterState,
@@ -47,17 +43,17 @@ function Navbar({ restaurants, currTableList }) {
       selectedSortOption: sortOption,
     }));
     if (sortOption === 'Highest Rating') {
-      currTableListState.sort((a, b) => b.Rating - a.Rating);
+      props.currTableList.sort((a, b) => b.Rating - a.Rating);
     } else if (sortOption === 'Lowest Rating') {
-      currTableListState.sort((a, b) => a.Rating - b.Rating);
+      props.currTableList.sort((a, b) => a.Rating - b.Rating);
     } else {
-      currTableListState.sort((a, b) => {
+      props.currTableList.sort((a, b) => {
         if (a.RestName < b.RestName) return -1;
         if (a.RestName > b.RestName) return 1;
         return 0;
       });
     }
-    setCurrTableList([...currTableListState]);
+    setCurrTableList([...props.currTableList]);
   }
 
   const filterTable = (type, value) => {

@@ -1,15 +1,15 @@
 import React from 'react';
+import ApiService from './_services/ApiService';
+// import TableService from './_services/TableService';
 import Home from './Home/Home';
-import Navbar from './Navbar/Navbar';
-import MenuModal from './MenuModal/MenuModal';
 import './App.css';
+
+const api = new ApiService();
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      {/* <Home /> */}
-      {/* <MenuModal /> */}
+      <Home api={api} />
     </div>
   );
 }
