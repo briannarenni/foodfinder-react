@@ -1,3 +1,7 @@
+export const cuisines = ['American', 'Chinese', 'Greek', 'Italian', 'Mexican', 'Thai'];
+
+export const cities = ['Atlanta', 'Chicago', 'Houston', 'Los Angeles', 'Miami', 'New Orleans', 'New York City', 'Orlando', 'Portland', 'Seattle', 'San Diego', 'San Francisco'];
+
 export class MenuItem {
   constructor(name, price, group) {
     this.ItemName = name;
@@ -15,3 +19,4 @@ export class Restaurant {
     this.Rating = rating;
   }
 }
+
