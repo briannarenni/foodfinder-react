@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Restaurant, cuisines, cities, sortOptions } from '../_services/Models';
+import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
-// ! restaurants undefined
 function Navbar({ restaurants, setCurrTableList }) {
   // state for cuisines, cities, and sortOptions
   const [cuisinesState, setCuisines] = useState(cuisines);
