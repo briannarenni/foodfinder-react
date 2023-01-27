@@ -5,17 +5,15 @@ export const NavbarView = (props) => {
   const { selectedCuisine, selectedCity, selectedSortOption } = filterState;
 
   return (
-    <nav className="d-flex justify-content-between">
-      <section className="left-btn mx-3">
-        <div className='d-inline'>
-          <button id="clear-btn" className="btn btn-outline-ternary mx-1" onClick={clearFilters}>
-            Clear Filters
-          </button>
-        </div>
-      </section>
-      <section className="nav-btns mx-1">
+    <nav className="d-flex justify-content-between align-content-end px-1">
+      <div id="title" className="h1">Food Finder App</div>
+
+      <section className="nav-btns">
+        <button id="clear-btn" className="btn btn-link text-ternary mx-1" onClick={clearFilters}>
+          Clear Filters
+        </button>
         <div className="btn-group">
-          <div data-bs-toggle="dropdown" className="d-inline-block">
+          <div data-bs-toggle="dropdown">
             <div className="d-inline-block">
               <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle mx-1"
                 type="button">
@@ -40,7 +38,7 @@ export const NavbarView = (props) => {
         </div>
 
         <div className="btn-group">
-          <div data-bs-toggle="dropdown" className="d-inline-block">
+          <div data-bs-toggle="dropdown">
             <button id="city-btn" className="btn btn-outline-info dropdown-toggle mx-1" type="button">
               <span>Filter City: </span> {filterState.selectedCity}
             </button>
@@ -62,7 +60,7 @@ export const NavbarView = (props) => {
         </div >
 
         <div className="btn-group">
-          <div data-bs-toggle="dropdown" className="d-inline-block">
+          <div data-bs-toggle="dropdown">
             <div className="d-inline-block">
               <button id="sort-btn" className="btn btn-outline-info dropdown-toggle mx-1">
                 <span>Sort By: </span> {selectedSortOption}
@@ -83,8 +81,6 @@ export const NavbarView = (props) => {
             </div>
           </div>
         </div >
-
-
       </section >
 
     </nav >

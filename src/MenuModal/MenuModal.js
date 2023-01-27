@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import './MenuModal.css';
 
-function MenuModal() {
+function MenuModal({ api }) {
 
+  // useEffect(() => {
+  //   api.getCuisineMenu()
+
+  // }, []);
 }
 
 export default MenuModal;

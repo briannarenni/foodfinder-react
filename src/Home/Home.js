@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Restaurant } from '../_services/Models';
 import './Home.css';
+import { Restaurant } from '../_services/Models';
 import Navbar from '../Navbar/Navbar';
 import Results from './HomeResults.jsx';
+// import MenuModal from '../MenuModal/MenuModal';
 
 function Home({ api }) {
   const [restaurants, setRestaurants] = useState([]);
@@ -11,22 +12,21 @@ function Home({ api }) {
   useEffect(() => {
     api.getRestaurants()
       .then(response => {
-        const restaurantsData = response.map(restaurant => new Restaurant(restaurant));
-        setRestaurants(restaurantsData);
-        setCurrTableList([...restaurantsData]);
-        console.log(restaurants, currTableList);
+        setRestaurants(response);
+        setCurrTableList(response);
       })
-      .catch(error => {
-        console.log(error);
+      .catch(e => {
+        e = "Response not returned"
+        console.log(e);
       });
   }, []);
 
-  const props = {restaurants, currTableList};
+  const props = {restaurants, currTableList, setCurrTableList};
 
   return (
     <div>
-      <Navbar restaurants={restaurants} currTableList={currTableList} setCurrTableList={setCurrTableList} />
-      <Results props={props} />
+      <Navbar {...props} />
+      <Results {...props} />
     </div>
   );
 

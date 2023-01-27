@@ -13,7 +13,7 @@ function Navbar({ restaurants, setCurrTableList }) {
   const [filterState, setFilterState] = useState({
     selectedCuisine: '',
     selectedCity: '',
-    selectedSortOption: 'Name',
+    selectedSortOption: sortOptions[0],
   });
 
   // set initial state of cuisines, cities, and sortOptions

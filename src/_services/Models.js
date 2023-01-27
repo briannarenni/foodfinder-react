@@ -2,7 +2,7 @@ export const cuisines = ['American', 'Chinese', 'Greek', 'Italian', 'Mexican', '
 
 export const cities = ['Atlanta', 'Chicago', 'Houston', 'Los Angeles', 'Miami', 'New Orleans', 'New York City', 'Orlando', 'Portland', 'Seattle', 'San Diego', 'San Francisco'];
 
-export const sortOptions = ['Name', 'Highest Rating', 'Lowest Rating'];
+export const sortOptions = ['Name (A-Z)', 'Rating (High)', 'Rating (Low)'];
 
 export class MenuItem {
   constructor(name, price, group) {
