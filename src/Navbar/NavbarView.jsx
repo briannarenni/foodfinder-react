@@ -1,15 +1,15 @@
 import React from 'react';
 
 export const NavbarView = (props) => {
-  const { reset } = props;
+  const { onClearFilters } = props;
 
   return (
     <nav className="d-flex justify-content-between align-content-end m-0 px-1">
       <div id="title" className="h1">Food Finder App</div>
 
       <section className="nav-btns">
-        <button id="clear-btn" className="btn btn-link text-ternary" //onClick={() => reset()}
-          >Clear Filters
+        <button id="clear-btn" className="btn btn-link text-ternary" onClick={() => onClearFilters()}>
+        Clear Filters
         </button>
 
         <div className="btn-group">

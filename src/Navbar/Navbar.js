@@ -4,11 +4,15 @@ import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
 function Navbar(navProps) {
-  const { reset, filterTable, sortTable, selectedCuisine, selectedCity, selectedSort, setSelectedCuisine, setSelectedCity, setSelectedSort } = navProps ;
+  const { reset } = navProps;
+  // const [cuisinesState, setCuisines] = useState(cuisines);
+  // const [citiesState, setCities] = useState(cities);
+  // const [sortOptionsState, setSortOptions] = useState(sortOptions);
 
-  const [cuisinesState, setCuisines] = useState(cuisines);
-  const [citiesState, setCities] = useState(cities);
-  const [sortOptionsState, setSortOptions] = useState(sortOptions);
+  // TODO: Reset
+  const onClearFilters = () => {
+    reset();
+  }
 
   // TODO: on click functions (sort, filter cuisine, filter city)
   // const onSortSelection = (option) => {
@@ -16,10 +20,10 @@ function Navbar(navProps) {
   //   sortTable(selectedSort);
   // };
 
-  // ! refactor with ...parent
-  const props = { reset, setSelectedCuisine, setSelectedCity};
+  const props = { onClearFilters };
 
   return <NavbarView {...props} />;
+
 }
 
 export default Navbar;

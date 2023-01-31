@@ -3,14 +3,16 @@ import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
 import ApiService from '../_services/ApiService';
+import { flushSync } from 'react-dom';
 // import MenuModal from '../MenuModal/MenuModal';
 
 const api = new ApiService();
 
 function Home() {
-  let fetchedData;
-  const [isLoading, setIsLoading] = useState(true);
+  const [fetchedData, setFetchedData] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [willReset, setWillReset] = useState(false);
   const [selectedCuisine, setSelectedCuisine] = useState('');
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedSort, setSelectedSort] = useState('Name');
@@ -18,15 +20,31 @@ function Home() {
   useEffect(() => {
     api.getRestaurants()
       .then(response => {
-        fetchedData = response;
         setRestaurants(response);
-        if (fetchedData.length > 0) setIsLoading(false);
+        setFetchedData(restaurants);
+        if (restaurants.length > 0) setIsLoading(false);
       })
       .catch(e => {
         e = "Error: No response returned"
         console.log(e);
       });
   }, []);
+
+  useEffect(() => {
+    reset();
+    setIsLoading(false);
+  }, [willReset])
+
+  // TODO: Not loading on click yet!
+  const reset = () => {
+    setWillReset(true);
+    setIsLoading(true);
+    setRestaurants(fetchedData);
+    // setSelectedCity('');
+    // setSelectedCuisine('');
+    // setSelectedSort('');
+    setWillReset(false);
+  }
 
   // TODO: Re-render on change?
   // useEffect(() => {
@@ -36,14 +54,6 @@ function Home() {
   //   useEffect(() => {
   //   filterTable();
   // }, [selectedCuisine, selectedCity]);
-
-  // TODO: Start here!
-  const reset = () => {
-    setRestaurants(fetchedData);
-    setSelectedCity('');
-    setSelectedCuisine('');
-    setSelectedSort('');
-  }
 
   const sortTable = (selectedSort) => {
     switch (selectedSort) {
@@ -84,7 +94,8 @@ function Home() {
   };
 
   // * Props
-  const navProps = { reset, filterTable, sortTable, selectedCuisine, selectedCity, selectedSort, setSelectedCuisine, setSelectedCity, setSelectedSort };
+  // filterTable, sortTable, selectedCuisine, selectedCity, selectedSort, setSelectedCuisine, setSelectedCity, setSelectedSort
+  const navProps = { reset };
 
   return (
     <div>
