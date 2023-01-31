@@ -1,38 +1,36 @@
 import React from 'react';
 
 export const NavbarView = (props) => {
-  const { clearFilters, sortTable, filterTable, cuisines, cities, sortOptions, filterState, handleSelectedCuisine, handleSelectedCity } = props;
-  const { selectedCuisine, selectedCity, selectedSortOption } = filterState;
+  const { reset } = props;
 
   return (
-    <nav className="d-flex justify-content-between align-content-end px-1">
+    <nav className="d-flex justify-content-between align-content-end m-0 px-1">
       <div id="title" className="h1">Food Finder App</div>
 
       <section className="nav-btns">
-        <button id="clear-btn" className="btn btn-link text-ternary mx-1" onClick={clearFilters}>
-          Clear Filters
+        <button id="clear-btn" className="btn btn-link text-ternary" //onClick={() => reset()}
+          >Clear Filters
         </button>
+
         <div className="btn-group">
           <div data-bs-toggle="dropdown">
             <div className="d-inline-block">
               <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle mx-1"
                 type="button">
-                <span>Filter Cuisine: </span>{filterState.selectedCuisine}
+                <span>Filter Cuisine: </span>
+                {/* {selectedCuisine} */}
               </button>
-              <ul className="dropdown-menu dropdown-menu-dark text-center">
+              {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
                 {cuisines.map((cuisine) => (
                   <li key={cuisine}>
                     <button
-                      className={`dropdown-item ${filterState.selectedCuisine === cuisine ? 'active' : ''}`}
-                      onClick={() => {
-                        handleSelectedCuisine(cuisine);
-                        filterTable();
-                      }}>
+                      className={`dropdown-item ${selectedCuisine === cuisine ? "active" : ""}`}
+                      onClick={() => setSelectedCuisine(cuisine)}>
                       {cuisine}
                     </button>
                   </li>
                 ))}
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div>
@@ -40,44 +38,43 @@ export const NavbarView = (props) => {
         <div className="btn-group">
           <div data-bs-toggle="dropdown">
             <button id="city-btn" className="btn btn-outline-info dropdown-toggle mx-1" type="button">
-              <span>Filter City: </span> {filterState.selectedCity}
+              <span>Filter City: </span>
+              {/* {selectedCity} */}
             </button>
-            <ul className="dropdown-menu dropdown-menu-dark text-center">
+            {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
               {cities.map((city) => (
                 <li key={city}>
                   <button
-                    className={`dropdown-item ${filterState.selectedCity === city ? 'active' : ''}`}
-                    onClick={() => {
-                      handleSelectedCity(city);
-                      filterTable();
-                    }}>
+                    className={`dropdown-item ${selectedCity === city ? "active" : ""}`}
+                    onClick={() => setSelectedCity(city)}>
                     {city}
                   </button>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
-        </div >
+        </div>
 
         <div className="btn-group">
           <div data-bs-toggle="dropdown">
             <div className="d-inline-block">
               <button id="sort-btn" className="btn btn-outline-info dropdown-toggle mx-1">
-                <span>Sort By: </span> {selectedSortOption}
+                <span>Sort By: </span>
+                {/* {selectedSort} */}
               </button>
-              <ul className="dropdown-menu dropdown-menu-dark text-center">
+              {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
 
                 {sortOptions.map((option) => (
                   <li key={option}>
                     <button
-                      className={`dropdown-item ${selectedSortOption === option ? 'active' : ''}`}
+                      className={`dropdown-item ${selectedSort === option ? 'active' : ''}`}
                       onClick={() => sortTable(option)}>
                       {option}
                     </button>
                   </li>
                 ))}
 
-              </ul>
+              </ul> */}
             </div>
           </div>
         </div >
