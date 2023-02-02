@@ -8,7 +8,7 @@ export const NavbarView = (props) => {
       <div id="title" className="h1">Food Finder App</div>
 
       <section className="nav-btns">
-        <button id="clear-btn" className="btn btn-link text-ternary" onClick={() => onClearFilters()}>
+        <button id="clear-btn" type="button" className="btn btn-link text-ternary" onClick={() => onClearFilters()}>
         Clear Filters
         </button>
 

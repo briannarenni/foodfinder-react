@@ -4,7 +4,7 @@ import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
 function Navbar(navProps) {
-  const { reset } = navProps;
+  const { reset} = navProps;
   // const [cuisinesState, setCuisines] = useState(cuisines);
   // const [citiesState, setCities] = useState(cities);
   // const [sortOptionsState, setSortOptions] = useState(sortOptions);

@@ -1,26 +1,33 @@
 import React from 'react';
 // import MenuModal from '../MenuModal/MenuModal';
 
-export const Results = ({restaurants, isLoading}) => {
+export const Results = ({ restaurants, isLoading }) => {
 
   return (
     <div>
-      {
-        isLoading ? (
-          <p className='text-center'>Loading results...</p>
-        ) : (
-          <table className="table text-white table-responsive table-borderless mt-3">
-            <thead className="fs-4 text-primary">
+      <table className="table text-white table-responsive table-borderless mt-3">
+        <thead className="fs-4 text-primary">
+          <tr>
+            <th scope="col">Restaurant</th>
+            <th scope="col">Cuisine</th>
+            <th scope="col">City</th>
+            <th scope="col" className="text-center">Rating</th>
+            <th scope="col" className="text-center">Grade</th>
+            <th scope="col" className="text-center p-2"></th>
+          </tr>
+        </thead>
+        {
+          isLoading ? (
+            <tbody>
               <tr>
-                <th scope="col">Restaurant</th>
-                <th scope="col">Cuisine</th>
-                <th scope="col">City</th>
-                <th scope="col" className="text-center">Rating</th>
-                <th scope="col" className="text-center">Grade</th>
-                <th scope="col" className="text-center p-2"></th>
+                <td></td>
+                <td className='text-center fst-italic'>Loading results...</td>
+                <td></td>
+                <td></td>
+                <td></td>
               </tr>
-            </thead>
-
+            </tbody>
+          ) : (
             <tbody>
               {restaurants.map((entry, index) => (
                 <tr key={index} className={`p-2 lead ${entry.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
@@ -36,9 +43,8 @@ export const Results = ({restaurants, isLoading}) => {
                 </tr>
               ))}
             </tbody>
-
-          </table >
-        )}
+          )}
+      </table >
     </div>
   )
 }

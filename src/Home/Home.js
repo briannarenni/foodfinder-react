@@ -30,20 +30,19 @@ function Home() {
       });
   }, []);
 
-  useEffect(() => {
-    reset();
-    setIsLoading(false);
-  }, [willReset])
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   reset();
+  //  setWillReset(false);
+  // }, [willReset])
 
   // TODO: Not loading on click yet!
   const reset = () => {
-    setWillReset(true);
-    setIsLoading(true);
     setRestaurants(fetchedData);
+    if (restaurants.length > 0) setIsLoading(false);
     // setSelectedCity('');
     // setSelectedCuisine('');
     // setSelectedSort('');
-    setWillReset(false);
   }
 
   // TODO: Re-render on change?
