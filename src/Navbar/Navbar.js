@@ -4,13 +4,19 @@ import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
 function Navbar(navProps) {
-  const { reset} = navProps;
+  const { reset } = navProps;
+  // const [selectedCuisine, setSelectedCuisine] = useState('');
+  // const [selectedCity, setSelectedCity] = useState('');
+  // const [selectedSort, setSelectedSort] = useState('Name');
   // const [cuisinesState, setCuisines] = useState(cuisines);
   // const [citiesState, setCities] = useState(cities);
   // const [sortOptionsState, setSortOptions] = useState(sortOptions);
 
   // TODO: Reset
   const onClearFilters = () => {
+    // setSelectedCity('');
+    // setSelectedCuisine('');
+    // setSelectedSort('Name');
     reset();
   }
 

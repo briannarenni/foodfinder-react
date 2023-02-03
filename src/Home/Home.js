@@ -4,40 +4,23 @@ import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
 // import MenuModal from '../MenuModal/MenuModal';
 
-function Home({data}) {
-  // const [fetchedData, setFetchedData] = useState([]);
-  const [restaurants, setRestaurants] = useState(data);
+function Home({ data }) {
+  // ! should load with data assigned to restaurants and show loading whenever not populated
+  // ! reset should work on click
   const [isLoading, setIsLoading] = useState(true);
-  const [selectedCuisine, setSelectedCuisine] = useState('');
-  const [selectedCity, setSelectedCity] = useState('');
-  const [selectedSort, setSelectedSort] = useState('Name');
+  const [restaurants, setRestaurants] = useState([]);
 
-  // const setInitResults = () => { }
-
-  while (restaurants.length > 0) {
-    setIsLoading(false);
-  }
-
-  // ! Run on initial load only
   useEffect(() => {
-    // setInitResults();
-    // setRestaurants(data);
-    if (restaurants.length > 0) setIsLoading(false);
+    if (data) {
+      setRestaurants(data);
+      setIsLoading(false);
+    }
   }, []);
 
   const reset = () => {
     setIsLoading(true);
-    setSelectedCity('');
-    setSelectedCuisine('');
-    setSelectedSort('Name');
     setRestaurants(data);
-    // setRestaurants(fetchedData);
-    // if (restaurants.length > 0) setIsLoading(false);
   }
-
-  //   useEffect(() => {
-  //   filterTable();
-  // }, [selectedCuisine, selectedCity]);
 
   const sortTable = (option) => {
     // switch (option) {
@@ -56,7 +39,6 @@ function Home({data}) {
   };
 
   const filterTable = (type, value) => {
-    let filteredRestaurants = setInitResults();
     // Toggle if already active
     // switch (type) {
     //   case 'cuisine':
@@ -78,12 +60,12 @@ function Home({data}) {
   }
 
   // * Props
-  // filterTable, sortTable, selectedCuisine, selectedCity, selectedSort, setSelectedCuisine, setSelectedCity, setSelectedSort
+  // sortTable, filterTable
   const navProps = { reset };
 
   return (
     <div>
-      <Navbar {...navProps} />
+      {/* <Navbar {...navProps} /> */}
       <Results restaurants={restaurants} isLoading={isLoading} />
     </div>
   );

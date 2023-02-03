@@ -1,39 +1,46 @@
 function App() {
-  const api = new ApiService();
-  let data;
+	const api = new ApiService();
+	let dataRef = useRef(null);
 
-  useEffect(() => {
-    api.getRestaurants()
-      .then(response => {
-        data = response;
-      })
-.catch(e => {
-  console.error(e);
-});
+	useEffect(() => {
+		api.getRestaurants()
+			.then(response => {
+				dataRef.current = response;
+			})
+			.catch(e => {
+				console.error(e);
+			});
+	}, []);
 
-  }, []);
+	return (
+		<div className="App">
+			<Home data={dataRef.current} />
+		</div>
+	);
 
-  return (
-    <div className="App">
-      <Home data={data} />
-    </div>
-  );
 }
-
-export default App;
 
 // Home.js
 function Home({data}) {
-    const [isLoading, setIsLoading] = useState(true);
-  const [restaurants, setRestaurants] = useState(data);
+	const [isLoading, setIsLoading] = useState(true);
+	const [restaurants, setRestaurants] = useState([]);
 
-useEffect(() => {
-  if (restaurants.length > 0) setIsLoading(false);
-}, [restaurants]);
+	useEffect(() => {
+		if (data) {
+			setRestaurants(data);
+			setIsLoading(false);
+		}
+	}, []);
 
-  const reset = () => {
-    setIsLoading(true);
-    setRestaurants(data);
-  }
+	const reset = () => {
+		setIsLoading(true);
+		setRestaurants(data);
+	}
+
+	return (
+		<div>
+			<Results restaurants={restaurants} isLoading={isLoading} />
+		</div>
+	);
 }
 
