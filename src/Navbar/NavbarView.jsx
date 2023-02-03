@@ -1,7 +1,12 @@
 import React from 'react';
+import { cuisineFilters, cityFilters, sortFilters } from '../_services/Models';
+
+const sortOptions = sortFilters;
+const cuisineOptions = cuisineFilters;
+const cityOptions = cityFilters;
 
 export const NavbarView = (props) => {
-  const { onClearFilters } = props;
+  const { onClearFilters, selectedSort, setSelectedSort } = props;
 
   return (
     <nav className="d-flex justify-content-between align-content-end m-0 px-1">
@@ -9,7 +14,7 @@ export const NavbarView = (props) => {
 
       <section className="nav-btns">
         <button id="clear-btn" type="button" className="btn btn-link text-ternary" onClick={() => onClearFilters()}>
-        Clear Filters
+          Clear Filters
         </button>
 
         <div className="btn-group">
@@ -60,21 +65,21 @@ export const NavbarView = (props) => {
             <div className="d-inline-block">
               <button id="sort-btn" className="btn btn-outline-info dropdown-toggle mx-1">
                 <span>Sort By: </span>
-                {/* {selectedSort} */}
+                {selectedSort}
               </button>
-              {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
+              <ul className="dropdown-menu dropdown-menu-dark text-center">
 
                 {sortOptions.map((option) => (
                   <li key={option}>
                     <button
-                      className={`dropdown-item ${selectedSort === option ? 'active' : ''}`}
-                      onClick={() => sortTable(option)}>
+                      className={`dropdown-item ${setSelectedSort === option ? 'active' : ''}`}
+                      onClick={() => setSelectedSort(option)}>
                       {option}
                     </button>
                   </li>
                 ))}
 
-              </ul> */}
+              </ul>
             </div>
           </div>
         </div >

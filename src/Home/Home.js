@@ -5,7 +5,6 @@ import { Results } from './HomeResults';
 // import MenuModal from '../MenuModal/MenuModal';
 
 function Home({ data }) {
-  // ! reset should work on click
   const [restaurants, setRestaurants] = useState(data);
 
   const reset = () => {
@@ -49,7 +48,7 @@ function Home({ data }) {
     // };
   }
 
-  const navProps = { reset, sortTable, filterTable };
+  const navProps = { reset, sortTable}; // filterTable
 
   return (
     <div>
