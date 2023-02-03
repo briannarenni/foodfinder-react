@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
@@ -44,12 +44,12 @@ function Home({ data }) {
 
     //     if (selectedCuisine) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.Cuisine === selectedCuisine);
 
-    //     //  ? Do I need to call sort with active sortOption?
+    //  ? Do I need to call sort with active sortOption?
     //     setRestaurants(filteredRestaurants);
     // };
   }
 
-  const navProps = { reset };   // sortTable, filterTable
+  const navProps = { reset, sortTable, filterTable };
 
   return (
     <div>
