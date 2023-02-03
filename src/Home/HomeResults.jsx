@@ -1,7 +1,7 @@
 import React from 'react';
 // import MenuModal from '../MenuModal/MenuModal';
 
-export const Results = ({ restaurants, isLoading }) => (
+export const Results = ({ restaurants }) => (
   <div>
     <table className="table text-white table-responsive table-borderless mt-3">
       <thead className="fs-4 text-primary">
@@ -15,15 +15,7 @@ export const Results = ({ restaurants, isLoading }) => (
         </tr>
       </thead>
       <tbody>
-        {isLoading ? (
-          <tr>
-            <td></td>
-            <td className='text-center fst-italic'>Loading results...</td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-        ) : (
+        {
           restaurants.map((entry, index) => (
             <tr key={index} className={`p-2 lead ${entry.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
               <td>{entry.RestName}</td>
@@ -37,8 +29,8 @@ export const Results = ({ restaurants, isLoading }) => (
               </td>
             </tr>
           ))
-        )}
+        }
       </tbody>
     </table>
   </div>
-);
+)

@@ -1,16 +1,18 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Home from './Home/Home';
 import ApiService from './_services/ApiService';
 import './App.css';
 
 function App() {
   const api = new ApiService();
-  let dataRef = useRef(null);
+  const dataRef = useRef(null);
+  const [data, setData] = useState(dataRef.current);
 
   useEffect(() => {
     api.getRestaurants()
       .then(response => {
         dataRef.current = response;
+        setData(response);
       })
       .catch(e => {
         console.error(e);
@@ -19,11 +21,9 @@ function App() {
 
   return (
     <div className="App">
-      <Home data={dataRef.current} />
+      {data ? <Home data={data} /> : <p>Loading...</p>}
     </div>
   );
-
 }
-
 
 export default App;

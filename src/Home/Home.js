@@ -5,20 +5,10 @@ import { Results } from './HomeResults';
 // import MenuModal from '../MenuModal/MenuModal';
 
 function Home({ data }) {
-  // ! should load with data assigned to restaurants and show loading whenever not populated
   // ! reset should work on click
-  const [isLoading, setIsLoading] = useState(true);
-  const [restaurants, setRestaurants] = useState([]);
-
-  useEffect(() => {
-    if (data) {
-      setRestaurants(data);
-      setIsLoading(false);
-    }
-  }, []);
+  const [restaurants, setRestaurants] = useState(data);
 
   const reset = () => {
-    setIsLoading(true);
     setRestaurants(data);
   }
 
@@ -59,14 +49,12 @@ function Home({ data }) {
     // };
   }
 
-  // * Props
-  // sortTable, filterTable
-  const navProps = { reset };
+  const navProps = { reset };   // sortTable, filterTable
 
   return (
     <div>
-      {/* <Navbar {...navProps} /> */}
-      <Results restaurants={restaurants} isLoading={isLoading} />
+      <Navbar {...navProps} />
+      <Results restaurants={restaurants} />
     </div>
   );
 }

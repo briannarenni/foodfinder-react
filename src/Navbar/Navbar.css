@@ -11,8 +11,13 @@ span {
 #clear-btn {
   font-size: 16px;
   font-style: italic;
+  text-decoration: none;
   font-weight: bold;
   letter-spacing: normal;
+}
+
+#clear-btn:active {
+  text-decoration: underline;
 }
 
 
