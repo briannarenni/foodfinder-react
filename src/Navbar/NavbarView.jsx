@@ -64,27 +64,28 @@ export const NavbarView = (props) => {
           <div data-bs-toggle="dropdown">
             <div className="d-inline-block">
               <button id="sort-btn" className="btn btn-outline-info dropdown-toggle mx-1">
-                <span>Sort By: </span>
-                {selectedSort}
+                <span>Sort: </span> {selectedSort}
+                {/* {selectedSort === "" ? "Sort: " : selectedSort} */}
               </button>
-              <ul className="dropdown-menu dropdown-menu-dark text-center">
 
+
+              <ul className="dropdown-menu dropdown-menu-dark text-center">
                 {sortOptions.map((option) => (
                   <li key={option}>
                     <button
-                      className={`dropdown-item ${setSelectedSort === option ? 'active' : ''}`}
+                      className={`dropdown-item ${selectedSort === option ? 'active' : ''}`}
                       onClick={() => setSelectedSort(option)}>
                       {option}
                     </button>
                   </li>
                 ))}
-
               </ul>
+
             </div>
           </div>
         </div >
-      </section >
 
+      </section >
     </nav >
   )
 }

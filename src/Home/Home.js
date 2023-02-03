@@ -12,19 +12,19 @@ function Home({ data }) {
   }
 
   const sortTable = (option) => {
-    // switch (option) {
-    //   case 'Name':
-    //     restaurants.sort((a, b) => (a.RestName > b.RestName ? 1 : -1));
-    //     break;
-    //   case 'Highest Rating':
-    //     restaurants.sort((a, b) => (a.Rating < b.Rating ? 1 : -1));
-    //     break;
-    //   case 'Lowest Rating':
-    //     restaurants.sort((a, b) => (a.Rating > b.Rating ? 1 : -1));
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (option) {
+      case 'Name':
+        restaurants.sort((a, b) => (a.RestName > b.RestName ? 1 : -1));
+        break;
+      case 'Highest Rating':
+        restaurants.sort((a, b) => (a.Rating < b.Rating ? 1 : -1));
+        break;
+      case 'Lowest Rating':
+        restaurants.sort((a, b) => (a.Rating > b.Rating ? 1 : -1));
+        break;
+      default:
+        break;
+    }
   };
 
   const filterTable = (type, value) => {
