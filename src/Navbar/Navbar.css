@@ -13,7 +13,7 @@ span {
 }
 
 #clear-btn {
-  font-size: 16px;
+  font-size: 18px;
   font-style: italic;
   text-decoration: none;
   letter-spacing: normal;
@@ -21,10 +21,11 @@ span {
 
 #clear-btn:hover {
   color: var(--ternary);
-  font-size: 18px;
   font-weight: bold;
+  text-decoration: underline;
 }
 
 #clear-btn:active {
   text-decoration: underline;
+  color: white;
 }

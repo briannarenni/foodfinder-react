@@ -6,7 +6,8 @@ const cuisineOptions = cuisineFilters;
 const cityOptions = cityFilters;
 
 export const NavbarView = (props) => {
-  const { onClearFilters, selectedSort, setSelectedSort } = props;
+  const { onClearFilters, selectedSort, onSortSelection } = props;
+  const { selectedCuisine, onCuisineSelection, selectedCity, onCitySelection } = props;
 
   return (
     <nav className="d-flex justify-content-between align-content-end m-0 px-1">
@@ -23,19 +24,19 @@ export const NavbarView = (props) => {
               <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle mx-1"
                 type="button">
                 <span>Filter Cuisine: </span>
-                {/* {selectedCuisine} */}
+                {selectedCuisine}
               </button>
-              {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
-                {cuisines.map((cuisine) => (
+              <ul className="dropdown-menu dropdown-menu-dark text-center">
+                {cuisineFilters.map((cuisine) => (
                   <li key={cuisine}>
                     <button
                       className={`dropdown-item ${selectedCuisine === cuisine ? "active" : ""}`}
-                      onClick={() => setSelectedCuisine(cuisine)}>
+                      onClick={() => onCuisineSelection(cuisine)}>
                       {cuisine}
                     </button>
                   </li>
                 ))}
-              </ul> */}
+              </ul>
             </div>
           </div>
         </div>
@@ -44,19 +45,19 @@ export const NavbarView = (props) => {
           <div data-bs-toggle="dropdown">
             <button id="city-btn" className="btn btn-outline-info dropdown-toggle mx-1" type="button">
               <span>Filter City: </span>
-              {/* {selectedCity} */}
+              {selectedCity}
             </button>
-            {/* <ul className="dropdown-menu dropdown-menu-dark text-center">
-              {cities.map((city) => (
+            <ul className="dropdown-menu dropdown-menu-dark text-center">
+              {cityFilters.map((city) => (
                 <li key={city}>
                   <button
                     className={`dropdown-item ${selectedCity === city ? "active" : ""}`}
-                    onClick={() => setSelectedCity(city)}>
+                    onClick={() => onCitySelection(city)}>
                     {city}
                   </button>
                 </li>
               ))}
-            </ul> */}
+            </ul>
           </div>
         </div>
 
@@ -65,16 +66,14 @@ export const NavbarView = (props) => {
             <div className="d-inline-block">
               <button id="sort-btn" className="btn btn-outline-info dropdown-toggle mx-1">
                 <span>Sort: </span> {selectedSort}
-                {/* {selectedSort === "" ? "Sort: " : selectedSort} */}
               </button>
-
 
               <ul className="dropdown-menu dropdown-menu-dark text-center">
                 {sortOptions.map((option) => (
                   <li key={option}>
                     <button
                       className={`dropdown-item ${selectedSort === option ? 'active' : ''}`}
-                      onClick={() => setSelectedSort(option)}>
+                      onClick={() => onSortSelection(option)}>
                       {option}
                     </button>
                   </li>
