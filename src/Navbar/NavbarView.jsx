@@ -1,13 +1,13 @@
 import React from 'react';
 import { cuisineFilters, cityFilters, sortFilters } from '../_services/Models';
 
-const sortOptions = sortFilters;
-const cuisineOptions = cuisineFilters;
-const cityOptions = cityFilters;
+// const sortOptions = sortFilters;
+// const cuisineOptions = cuisineFilters;
+// const cityOptions = cityFilters;
 
 export const NavbarView = (props) => {
-  const { onClearFilters, selectedSort, onSortSelection } = props;
-  const { selectedCuisine, onCuisineSelection, selectedCity, onCitySelection } = props;
+  const { selectedSort, selectedCuisine, selectedCity, } = props;
+  const { onClearFilters, onSortSelection, onCuisineSelection, onCitySelection } = props;
 
   return (
     <nav className="d-flex justify-content-between align-content-end m-0 px-1">
@@ -30,7 +30,7 @@ export const NavbarView = (props) => {
                 {cuisineFilters.map((cuisine) => (
                   <li key={cuisine}>
                     <button
-                      className={`dropdown-item ${selectedCuisine === cuisine ? "active" : ""}`}
+                      className={`dropdown-item ${selectedCuisine.cuisine === cuisine ? "active" : ""}`}
                       onClick={() => onCuisineSelection(cuisine)}>
                       {cuisine}
                     </button>
@@ -51,7 +51,7 @@ export const NavbarView = (props) => {
               {cityFilters.map((city) => (
                 <li key={city}>
                   <button
-                    className={`dropdown-item ${selectedCity === city ? "active" : ""}`}
+                    className={`dropdown-item ${selectedCity.city === city ? "active" : ""}`}
                     onClick={() => onCitySelection(city)}>
                     {city}
                   </button>
@@ -69,7 +69,7 @@ export const NavbarView = (props) => {
               </button>
 
               <ul className="dropdown-menu dropdown-menu-dark text-center">
-                {sortOptions.map((option) => (
+                {sortFilters.map((option) => (
                   <li key={option}>
                     <button
                       className={`dropdown-item ${selectedSort === option ? 'active' : ''}`}

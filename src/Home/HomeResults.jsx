@@ -16,19 +16,25 @@ export const Results = ({ restaurants }) => (
       </thead>
       <tbody>
         {
-          restaurants.map((entry, index) => (
-            <tr key={index} className={`p-2 lead ${entry.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
-              <td>{entry.RestName}</td>
-              <td>{entry.Cuisine}</td>
-              <td>{entry.City}</td>
-              <td className="text-center">{entry.Rating}</td>
-              <td className="text-center">{entry.Grade}</td>
-              <td className="text-center">
-                {/* Menu Modal
-            {entry.Grade !== 'F' && <MenuModal restInfo={entry} />} */}
-              </td>
+          restaurants.length < 1 ? (
+            <tr>
+              <td colSpan="6" className="text-center p-2 lead">No results</td>
             </tr>
-          ))
+          ) : (
+            restaurants.map((entry, index) => (
+              <tr key={index} className={`p-2 lead ${entry.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
+                <td>{entry.RestName}</td>
+                <td>{entry.Cuisine}</td>
+                <td>{entry.City}</td>
+                <td className="text-center">{entry.Rating}</td>
+                <td className="text-center">{entry.Grade}</td>
+                <td className="text-center">
+                  {/* Menu Modal
+            {entry.Grade !== 'F' && <MenuModal restInfo={entry} />} */}
+                </td>
+              </tr>
+            ))
+          )
         }
       </tbody>
     </table>

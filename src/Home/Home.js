@@ -5,57 +5,38 @@ import { Results } from './HomeResults';
 // import MenuModal from '../MenuModal/MenuModal';
 
 function Home({ data }) {
-  const origData = [...data];
-  const [restaurants, setRestaurants] = useState(origData);
-  const [sorted, setSorted] = useState(origData);
-
-  useEffect(() => {
-    setRestaurants(sorted.slice());
-  }, [sorted]);
+  const [restaurants, setRestaurants] = useState(data.slice());
 
   const reset = () => {
     setRestaurants(data);
   }
 
-  const sortTable = (option) => {
+  const sortBy = (option) => {
+    setRestaurants(sortData(restaurants, option));
+  };
+
+  const filterBy = (city, cuisine, sort) => {
+    let filteredRestaurants = data.slice();
+    if (city.city) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.City === city.city);
+    if (cuisine.cuisine) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.Cuisine === cuisine.cuisine);
+
+    setRestaurants(sortData(filteredRestaurants, sort));
+  };
+
+  const sortData = (data, option) => {
     switch (option) {
       case 'Name':
-        setSorted(origData.sort((a, b) => (a.RestName > b.RestName ? 1 : -1)));
-        break;
+        return data.sort((a, b) => (a.RestName > b.RestName ? 1 : -1));
       case 'Highest Rating':
-        setSorted(origData.sort((a, b) => (a.Rating < b.Rating ? 1 : -1)));
-        break;
+        return data.sort((a, b) => (a.Rating < b.Rating ? 1 : -1));
       case 'Lowest Rating':
-        setSorted(origData.sort((a, b) => (a.Rating > b.Rating ? 1 : -1)));
-        break;
+        return data.sort((a, b) => (a.Rating > b.Rating ? 1 : -1));
       default:
-        break;
+        return data;
     }
   };
 
-  // TODO:
-  const filterTable = (type, value) => {
-    // Toggle if already active
-    // switch (type) {
-    //   case 'cuisine':
-    //     setSelectedCuisine(selectedCuisine === value ? "" : value);
-    //     break;
-    //   case 'city':
-    //     setSelectedCity(selectedCity === value ? "" : value);
-    //     break;
-    //   default:
-    //     break;
-
-    //     if (selectedCity) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.City === selectedCity);
-
-    //     if (selectedCuisine) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.Cuisine === selectedCuisine);
-
-    //  ? Do I need to call sort with active sortOption?
-    //     setRestaurants(filteredRestaurants);
-    // };
-  }
-
-  const navProps = { reset, sortTable }; // filterTable
+  const navProps = { reset, sortBy, filterBy };
 
   return (
     <div>

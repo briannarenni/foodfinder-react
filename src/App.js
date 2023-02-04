@@ -5,13 +5,11 @@ import './App.css';
 
 function App() {
   const api = new ApiService();
-  const dataRef = useRef(null);
-  const [data, setData] = useState(dataRef.current);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     api.getRestaurants()
       .then(response => {
-        dataRef.current = response;
         setData(response);
       })
       .catch(e => {
