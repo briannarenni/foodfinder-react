@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './Home/Home';
 import ApiService from './_services/ApiService';
 import './App.css';

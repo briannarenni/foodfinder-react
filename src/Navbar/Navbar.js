@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
@@ -7,6 +7,10 @@ function Navbar(navProps) {
   const [selectedSort, setSelectedSort] = useState('Name');
   const [selectedCuisine, setSelectedCuisine] = useState({ cuisine: '' });
   const [selectedCity, setSelectedCity] = useState({ city: '' });
+
+  useEffect(() => {
+    filterBy(selectedCuisine, selectedCity, selectedSort);
+  }, [selectedCuisine, selectedCity, selectedSort]);
 
   const onClearFilters = () => {
     setSelectedSort('Name');
@@ -24,14 +28,12 @@ function Navbar(navProps) {
     setSelectedCuisine(prevState =>
       prevState.cuisine === cuisineOption ? { cuisine: '' } : { cuisine: cuisineOption }
     );
-    filterBy(selectedCuisine, selectedCity, selectedSort);
   }
 
   const onCitySelection = (cityOption) => {
     setSelectedCity(prevState =>
       prevState.city === cityOption ? { city: '' } : { city: cityOption }
     );
-    filterBy(selectedCuisine, selectedCity, selectedSort);
   }
 
   const props = { selectedSort, selectedCuisine, selectedCity, onClearFilters, onSortSelection, onCuisineSelection, onCitySelection };

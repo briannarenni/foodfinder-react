@@ -1,10 +1,6 @@
 import React from 'react';
 import { cuisineFilters, cityFilters, sortFilters } from '../_services/Models';
 
-// const sortOptions = sortFilters;
-// const cuisineOptions = cuisineFilters;
-// const cityOptions = cityFilters;
-
 export const NavbarView = (props) => {
   const { selectedSort, selectedCuisine, selectedCity, } = props;
   const { onClearFilters, onSortSelection, onCuisineSelection, onCitySelection } = props;
@@ -24,7 +20,7 @@ export const NavbarView = (props) => {
               <button id="cuisine-btn" className="btn btn-outline-info dropdown-toggle mx-1"
                 type="button">
                 <span>Filter Cuisine: </span>
-                {selectedCuisine}
+                {selectedCuisine.cuisine}
               </button>
               <ul className="dropdown-menu dropdown-menu-dark text-center">
                 {cuisineFilters.map((cuisine) => (
@@ -45,7 +41,7 @@ export const NavbarView = (props) => {
           <div data-bs-toggle="dropdown">
             <button id="city-btn" className="btn btn-outline-info dropdown-toggle mx-1" type="button">
               <span>Filter City: </span>
-              {selectedCity}
+              {selectedCity.city}
             </button>
             <ul className="dropdown-menu dropdown-menu-dark text-center">
               {cityFilters.map((city) => (

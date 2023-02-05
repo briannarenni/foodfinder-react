@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
@@ -15,7 +15,7 @@ function Home({ data }) {
     setRestaurants(sortData(restaurants, option));
   };
 
-  const filterBy = (city, cuisine, sort) => {
+  const filterBy = (cuisine, city, sort) => {
     let filteredRestaurants = data.slice();
     if (city.city) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.City === city.city);
     if (cuisine.cuisine) filteredRestaurants = filteredRestaurants.filter(restaurant => restaurant.Cuisine === cuisine.cuisine);
