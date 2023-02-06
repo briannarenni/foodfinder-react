@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './MenuModal.css';
 import { Button, Modal } from 'react-bootstrap';
 import ApiService from '../_services/ApiService';
@@ -9,29 +9,19 @@ function MenuModal({ restInfo }) {
   const [apps, setApps] = useState([]);
   const [entrees, setEntrees] = useState([]);
 
-  // ? May need useEffect to watch apps
-  // ! not done
-  const handleClose = () => {
-    onMenuClick();
-    setShow(false)
-  };
-  const handleShow = () => setShow(true);
-
-  const fetchMenu = (cuisine) => {
+  useEffect(() => {
+    let cuisine = restInfo.Cuisine;
     api.getMenu(cuisine)
       .then(menuItems => {
         let appetizers = menuItems.filter(item => item.ItemGroup === 'appetizer');
         let entrees = menuItems.filter(item => item.ItemGroup !== 'appetizer');
-        return appetizers, entrees;
+        setApps(appetizers);
+        setEntrees(entrees);
       });
-  }
+  }, [restInfo]);
 
-  const onMenuClick = (cuisine) => {
-    let appetizers, entrees = fetchMenu(cuisine);
-    setApps(appetizers);
-    setEntrees(entrees);
-  }
-  // ! End not done
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <>
