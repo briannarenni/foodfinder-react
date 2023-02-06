@@ -19,7 +19,7 @@ function App() {
 
   return (
     <div className="App">
-      {data ? <Home data={data} /> : <p>Loading...</p>}
+      {data ? <Home data={data} /> : <p className="text-center">Loading...</p>}
     </div>
   );
 }
