@@ -1,5 +1,5 @@
 import React from 'react';
-// import MenuModal from '../MenuModal/MenuModal';
+import MenuModal from '../MenuModal/MenuModal';
 
 export const Results = ({ restaurants }) => (
   <div>
@@ -21,16 +21,15 @@ export const Results = ({ restaurants }) => (
               <td colSpan="6" className="text-center p-2 lead">No results</td>
             </tr>
           ) : (
-            restaurants.map((entry, index) => (
-              <tr key={index} className={`p-2 lead ${entry.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
-                <td>{entry.RestName}</td>
-                <td>{entry.Cuisine}</td>
-                <td>{entry.City}</td>
-                <td className="text-center">{entry.Rating}</td>
-                <td className="text-center">{entry.Grade}</td>
+            restaurants.map((rest, index) => (
+              <tr key={index} className={`p-2 lead ${rest.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
+                <td>{rest.RestName}</td>
+                <td>{rest.Cuisine}</td>
+                <td>{rest.City}</td>
+                <td className="text-center">{rest.Rating}</td>
+                <td className="text-center">{rest.Grade}</td>
                 <td className="text-center">
-                  {/* Menu Modal
-            {entry.Grade !== 'F' && <MenuModal restInfo={entry} />} */}
+                  {rest.Grade !== 'F' && <MenuModal restInfo={rest} />}
                 </td>
               </tr>
             ))

@@ -2,7 +2,6 @@ import React, { useState} from 'react';
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
-// import MenuModal from '../MenuModal/MenuModal';
 
 function Home({ data }) {
   const [restaurants, setRestaurants] = useState(data.slice());
