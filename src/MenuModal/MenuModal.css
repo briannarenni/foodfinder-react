@@ -7,11 +7,18 @@
 #see-menu-btn {
   font-size: 21px;
   background-color: transparent !important;
+
 }
 
 #see-menu-btn:hover {
   background-color: var(--primary) !important;
   border-color: var(--light);
+}
+
+#see-menu-btn:disabled {
+  font-size: 21px;
+  background-color: transparent !important;
+  border-color: var(--primary);
 }
 
 #lead {

@@ -29,7 +29,7 @@ export const Results = ({ restaurants }) => (
                 <td className="text-center">{rest.Rating}</td>
                 <td className="text-center">{rest.Grade}</td>
                 <td className="text-center">
-                  {rest.Grade !== 'F' && <MenuModal restInfo={rest} />}
+                  <MenuModal restInfo={rest} />
                 </td>
               </tr>
             ))

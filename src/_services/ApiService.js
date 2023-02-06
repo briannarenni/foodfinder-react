@@ -16,7 +16,7 @@ class ApiService {
     return this.restaurants;
   }
 
-  async getCuisineMenu(cuisine) {
+  async getMenu(cuisine) {
     const params = new URLSearchParams({ cuisine });
     const data = await ky.get(`${this.URL}/menus/cuisine`, { searchParams: params }).json();
     this.menuItems = data.map(menuItem => {
