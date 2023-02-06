@@ -6,7 +6,7 @@ import './MenuModal.css';
 
 // ? useEffect(() => { api.getCuisineMenu() }, []);
 
-function MenuModal({ rest }) {
+function MenuModal({ restInfo }) {
   const api = new ApiService();
   const [show, setShow] = useState(false);
 
@@ -21,19 +21,19 @@ function MenuModal({ rest }) {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" id="see-menu-btn" onClick={handleShow}   disabled={restInfo.Grade === 'F'}>
         See Menu
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg">
         <Modal.Header closeButton variant="white">
-          <Modal.Title className="text-primary">(restInfo.RestName) - ( restInfo.City)</Modal.Title>
+          <Modal.Title className="text-secondary">{restInfo.RestName} - {restInfo.City}</Modal.Title>
         </Modal.Header>
         <Modal.Body className="px-4">
           <div>
             <table className="table table-borderless text-white">
               <tbody>
-                <tr className="lead fw-semibold text-decoration-underline">Appetizers</tr>
+                <tr id="lead" className="lead">Appetizers</tr>
                 <tr> {/* *ngFor="let item of apps" className="mb-1" */}
                   <td className="col-10">(item.ItemName)</td>
                   <td className="col-2">(item.ItemPrice)</td>
@@ -42,7 +42,7 @@ function MenuModal({ rest }) {
             </table>
             <table className="table table-borderless text-white">
               <tbody>
-                <tr className="lead fw-semibold text-decoration-underline p-2">Entrees</tr>
+                <tr id="lead" className="lead">Entrees</tr>
                 <tr> {/* *ngFor="let item of entrees" */}
                   <td className="col-10">(item.ItemName)</td>
                   <td className="col-2">(item.ItemPrice)</td>
@@ -52,11 +52,8 @@ function MenuModal({ rest }) {
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
+          <Button variant="primary" className="btm-btn-close" onClick={handleClose}>
             Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
           </Button>
         </Modal.Footer>
       </Modal>

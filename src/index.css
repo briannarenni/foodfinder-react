@@ -1,21 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300&display=swap');
+
+:root {
+  --primary: #8850ef;
+  --secondary: #a97ef9;
+  --ternary: #f930c0;
+  --light: #f8f9fa;
+  --dark: #070707;
+  --dark-grey: #292a2a;
+  --modal-dark: #0b0e0f;
+}
+
 body {
   box-sizing: border-box;
   margin: 5px;
   padding: 10px 25px;
   background-color: var(--dark);
   color: var(--light);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Arial', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Color override */
+/* Bootstrap color overrides */
 .text-primary {
   color: var(--primary) !important;
 }
 
+.text-secondary {
+  color: var(--secondary) !important;
+}
+
 .text-ternary {
-  color: var(--ternary);
+  color: var(--ternary) !important;
 }
 
 .btn-primary {
@@ -27,54 +43,15 @@ body {
 
 .btn-primary:hover {
   background-color: var(--secondary);
-  border-color: var(--secondary);
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.btn-outline-primary {
-  color: var(--primary);
   border-color: var(--primary);
   padding-left: 20px;
   padding-right: 20px;
 }
 
-.btn-outline-primary:hover {
+.btn-primary:active {
   color: var(--light);
-  background-color: var(--secondary);
-  border-color: var(--secondary);
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
   padding-left: 20px;
   padding-right: 20px;
-}
-
-.btn-outline-ternary {
-  color: var(--ternary);
-  border-color: var(--ternary);
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.btn-outline-ternary:hover {
-  color: black;
-  background-color: var(--ternary);
-  border-color: var(--ternary);
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-:root {
-  --primary: #b238fe;
-  --secondary: #8850ef;
-  --ternary: #f930c0;
-  --pink: #e83e8c;
-  --white: #fff;
-  --light: #f8f9fa;
-  --dark: #070707;
-  --dark-grey: #292a2a;
-  --modal-dark: #191818;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

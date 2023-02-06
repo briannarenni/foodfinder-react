@@ -4,7 +4,7 @@ import MenuModal from '../MenuModal/MenuModal';
 export const Results = ({ restaurants }) => (
   <div>
     <table className="table text-white table-responsive table-borderless mt-3">
-      <thead className="fs-4 text-primary">
+      <thead className="fs-4 text-secondary">
         <tr>
           <th scope="col">Restaurant</th>
           <th scope="col">Cuisine</th>
