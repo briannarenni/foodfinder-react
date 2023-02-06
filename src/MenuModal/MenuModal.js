@@ -25,7 +25,9 @@ function MenuModal({ restInfo }) {
 
   return (
     <>
-      <Button variant="primary" id="see-menu-btn" onClick={handleShow} disabled={restInfo.Grade === 'F'}>
+      <Button variant="primary" id="see-menu-btn"
+        onClick={handleShow}
+        disabled={restInfo.Grade === 'F'}>
         See Menu
       </Button>
 
@@ -40,14 +42,12 @@ function MenuModal({ restInfo }) {
                 <tr id="lead" className="lead">
                   <td>Appetizers</td>
                 </tr>
-                {
-                  apps.map((item, index) => (
-                    <tr key={index}>
-                      <td className="col-10">{item.ItemName}</td>
-                      <td className="col-2">{item.ItemPrice}</td>
-                    </tr>
-                  ))
-                }
+                {apps.map((item, index) => (
+                  <tr key={index}>
+                    <td className="col-10">{item.ItemName}</td>
+                    <td className="col-2">{item.ItemPrice}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
             <table className="table table-borderless text-white">
@@ -55,22 +55,18 @@ function MenuModal({ restInfo }) {
                 <tr id="lead" className="lead">
                   <td>Entrees</td>
                 </tr>
-                {
-                  entrees.map((item, index) => (
-                    <tr key={index}>
-                      <td className="col-10">{item.ItemName}</td>
-                      <td className="col-2">{item.ItemPrice}</td>
-                    </tr>
-                  ))
-                }
+                {entrees.map((item, index) => (
+                  <tr key={index}>
+                    <td className="col-10">{item.ItemName}</td>
+                    <td className="col-2">{item.ItemPrice}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" className="btm-btn-close" onClick={handleClose}>
-            Close
-          </Button>
+          <Button variant="primary" className="btm-btn-close" onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
     </>

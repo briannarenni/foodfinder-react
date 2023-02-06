@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import './Home.css';
 import Navbar from '../Navbar/Navbar';
 import { Results } from './HomeResults';
@@ -6,13 +6,8 @@ import { Results } from './HomeResults';
 function Home({ data }) {
   const [restaurants, setRestaurants] = useState(data.slice());
 
-  const reset = () => {
-    setRestaurants(data);
-  }
-
-  const sortBy = (option) => {
-    setRestaurants(sortData(restaurants, option));
-  };
+  const reset = () => setRestaurants(data);
+  const sortBy = (option) => setRestaurants(sortData(restaurants, option));
 
   const filterBy = (cuisine, city, sort) => {
     let filteredRestaurants = data.slice();
