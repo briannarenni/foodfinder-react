@@ -3,21 +3,12 @@ import './Navbar.css';
 import { NavbarView } from './NavbarView.jsx';
 
 function Navbar(navProps) {
-  const { reset, sortBy, filterBy } = navProps;
-  const [selectedSort, setSelectedSort] = useState('Name');
-  const [selectedCuisine, setSelectedCuisine] = useState({ cuisine: '' });
-  const [selectedCity, setSelectedCity] = useState({ city: '' });
+  const { sortBy, filterBy } = navProps;
+  const { selectedCuisine, selectedCity, selectedSort, setSelectedSort, setSelectedCuisine, setSelectedCity } = navProps;
 
   useEffect(() => {
     filterBy(selectedCuisine, selectedCity, selectedSort);
   }, [selectedCuisine, selectedCity, selectedSort]);
-
-  const onClearFilters = () => {
-    setSelectedSort('Name');
-    setSelectedCity('');
-    setSelectedCuisine('');
-    reset();
-  }
 
   const onSortSelection = (option) => {
     setSelectedSort(option);
@@ -36,9 +27,9 @@ function Navbar(navProps) {
     );
   }
 
-  const props = { selectedSort, selectedCuisine, selectedCity, onClearFilters, onSortSelection, onCuisineSelection, onCitySelection };
+  const props = { selectedSort, selectedCuisine, selectedCity, onSortSelection, onCuisineSelection, onCitySelection };
 
-  return <NavbarView {...props} />;
+  return <NavbarView { ...props } />;
 }
 
 export default Navbar;

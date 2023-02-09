@@ -1,8 +1,8 @@
-export const sortFilters = ['Name', 'Highest Rating', 'Lowest Rating'];
+export const sortFilters = ['Name (A-Z)', 'Highest Score', 'Lowest Score'];
 
 export const cuisineFilters = ['American', 'Chinese', 'Greek', 'Italian', 'Mexican', 'Thai'];
 
-export const cityFilters = ['Atlanta', 'Chicago', 'Las Vegas', 'Los Angeles', 'Miami', 'New York City', 'Orlando', 'Seattle'];
+export const cityFilters = ['Atlanta', 'Chicago', 'Las Vegas', 'Los Angeles', 'Miami', 'NYC', 'Orlando', 'Seattle'];
 
 export class MenuItem {
   constructor(name, price, group) {

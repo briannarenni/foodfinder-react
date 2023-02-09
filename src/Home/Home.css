@@ -19,3 +19,18 @@ thead:after {
   width: 100%;
   border-bottom: 1px solid var(--light);
 }
+
+#clear-btn {
+  font-size: 18px;
+  text-decoration: none;
+  letter-spacing: normal;
+}
+
+#clear-btn:hover {
+  color: var(--ternary);
+  font-weight: bold;
+}
+
+#clear-btn:active {
+  color: var(--secondary) !important;
+}

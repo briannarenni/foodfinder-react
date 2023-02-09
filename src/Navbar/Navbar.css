@@ -12,17 +12,4 @@ span {
   font-size: 2.3rem;
 }
 
-#clear-btn {
-  font-size: 18px;
-  text-decoration: none;
-  letter-spacing: normal;
-}
 
-#clear-btn:hover {
-  color: var(--ternary);
-  font-weight: bold;
-}
-
-#clear-btn:active {
-  color: var(--secondary) !important;
-}

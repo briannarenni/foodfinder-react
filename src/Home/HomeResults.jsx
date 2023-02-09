@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import MenuModal from '../MenuModal/MenuModal';
 
-export const Results = ({ restaurants }) => {
+export const Results = ({ restaurants, reset }) => {
   return (
     <div>
       <table className="table text-white table-responsive table-borderless mt-3">
@@ -12,7 +12,11 @@ export const Results = ({ restaurants }) => {
             <th scope="col">City</th>
             <th scope="col" className="text-center">Rating</th>
             <th scope="col" className="text-center">Grade</th>
-            <th scope="col" className="text-center p-2"></th>
+            <th scope="col" className="text-center p-2">
+              <button id="clear-btn" type="button" className="btn btn-link text-ternary" onClick={ () => reset() }>
+                Clear Filters
+              </button>
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -23,14 +27,14 @@ export const Results = ({ restaurants }) => {
               </tr>
             ) : (
               restaurants.map((rest, index) => (
-                <tr key={index} className={`p-2 lead ${rest.Grade === 'F' ? 'text-danger' : 'text-white'}`}>
-                  <td>{rest.RestName}</td>
-                  <td>{rest.Cuisine}</td>
-                  <td>{rest.City}</td>
-                  <td className="text-center">{rest.Rating}</td>
-                  <td className="text-center">{rest.Grade}</td>
+                <tr key={ index } className={ `p-2 lead ${rest.Grade === 'F' ? 'text-danger' : 'text-white'}` }>
+                  <td>{ rest.RestName }</td>
+                  <td>{ rest.Cuisine }</td>
+                  <td>{ rest.City }</td>
+                  <td className="text-center">{ rest.Rating }</td>
+                  <td className="text-center">{ rest.Grade }</td>
                   <td className="text-center">
-                    <MenuModal restInfo={rest} />
+                    <MenuModal restInfo={ rest } />
                   </td>
                 </tr>
               ))

@@ -5,8 +5,17 @@ import { Results } from './HomeResults';
 
 function Home({ data }) {
   const [restaurants, setRestaurants] = useState(data.slice());
+  const [selectedSort, setSelectedSort] = useState('Name (A-Z)');
+  const [selectedCuisine, setSelectedCuisine] = useState({ cuisine: '' });
+  const [selectedCity, setSelectedCity] = useState({ city: '' });
 
-  const reset = () => setRestaurants(data);
+  const reset = () => {
+    setSelectedSort('Name (A-Z)');
+    setSelectedCity('');
+    setSelectedCuisine('');
+    setRestaurants(data);
+  };
+
   const sortBy = (option) => setRestaurants(sortData(restaurants, option));
 
   const filterBy = (cuisine, city, sort) => {
@@ -21,21 +30,21 @@ function Home({ data }) {
     switch (option) {
       case 'Name':
         return data.sort((a, b) => (a.RestName > b.RestName ? 1 : -1));
-      case 'Highest Rating':
+      case 'Highest Score':
         return data.sort((a, b) => (a.Rating < b.Rating ? 1 : -1));
-      case 'Lowest Rating':
+      case 'Lowest Score':
         return data.sort((a, b) => (a.Rating > b.Rating ? 1 : -1));
       default:
         return data;
     }
   };
 
-  const navProps = { reset, sortBy, filterBy };
+  const navProps = { reset, sortBy, filterBy, selectedCuisine, selectedCity, selectedSort, setSelectedSort, setSelectedCuisine, setSelectedCity };
 
   return (
     <div>
-      <Navbar {...navProps} />
-      <Results restaurants={restaurants} />
+      <Navbar { ...navProps } />
+      <Results restaurants={ restaurants } reset={ reset } />
     </div>
   );
 }
