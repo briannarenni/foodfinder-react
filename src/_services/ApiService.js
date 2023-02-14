@@ -2,7 +2,7 @@ import ky from 'ky';
 import { MenuItem, Restaurant } from './Models';
 
 class ApiService {
-  URL = 'https://foodfindernetapi.azurewebsites.net';
+  URL = 'https://foodfinder-api.azurewebsites.net';
   cuisines = ['american', 'chinese', 'greek', 'italian', 'mexican', 'thai'];
   restaurants = [];
   menuItems = [];
