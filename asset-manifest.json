@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/foodfinder-react/static/css/main.509791da.css",
-    "main.js": "/foodfinder-react/static/js/main.eae20790.js",
+    "main.css": "/foodfinder-react/static/css/main.a9e711a9.css",
+    "main.js": "/foodfinder-react/static/js/main.1e82a332.js",
     "index.html": "/foodfinder-react/index.html",
-    "main.509791da.css.map": "/foodfinder-react/static/css/main.509791da.css.map",
-    "main.eae20790.js.map": "/foodfinder-react/static/js/main.eae20790.js.map"
+    "main.a9e711a9.css.map": "/foodfinder-react/static/css/main.a9e711a9.css.map",
+    "main.1e82a332.js.map": "/foodfinder-react/static/js/main.1e82a332.js.map"
   },
   "entrypoints": [
-    "static/css/main.509791da.css",
-    "static/js/main.eae20790.js"
+    "static/css/main.a9e711a9.css",
+    "static/js/main.1e82a332.js"
   ]
 }
