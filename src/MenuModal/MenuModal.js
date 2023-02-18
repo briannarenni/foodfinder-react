@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './MenuModal.css';
 import { Button, Modal } from 'react-bootstrap';
-import ApiService from '../_services/ApiService';
+import ApiService from '../_services/apiService';
 
 function MenuModal({ restInfo }) {
   const api = new ApiService();

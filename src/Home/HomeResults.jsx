@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MenuModal from '../MenuModal/MenuModal';
+import MenuModal from '../menuModal/MenuModal';
 
 export const Results = ({ restaurants, reset }) => {
   return (

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import ApiService from './_services/ApiService';
-import Home from './Home/Home';
+import ApiService from './_services/apiService';
+import Home from './home/Home';
 
 function App() {
   const api = new ApiService();
