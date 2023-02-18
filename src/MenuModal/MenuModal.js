@@ -28,7 +28,7 @@ function MenuModal({ restInfo }) {
       <Button variant="primary" id="see-menu-btn"
         onClick={handleShow}
         disabled={restInfo.Grade === 'F'}>
-        See Menu
+        Menu
       </Button>
 
       <Modal show={show} onHide={handleClose} size="lg" backdrop="static">
