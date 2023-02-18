@@ -4,10 +4,9 @@
   background-color: var(--modal-dark);
 }
 
-#see-menu-btn {
-  font-size: 21px;
+.see-menu-btn {
+  font-size: .8em;
   background-color: transparent !important;
-
 }
 
 #see-menu-btn:hover {

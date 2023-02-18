@@ -3,7 +3,7 @@ import MenuModal from '../menuModal/MenuModal';
 
 export const Results = ({ restaurants, reset }) => {
   return (
-    <div>
+    <div className="container-fluid">
       <table className="table text-white table-responsive table-borderless mt-3">
         <thead className="fs-4 text-secondary">
           <tr>
@@ -12,9 +12,9 @@ export const Results = ({ restaurants, reset }) => {
             <th scope="col">City</th>
             <th scope="col" className="text-center">Rating</th>
             <th scope="col" className="text-center">Grade</th>
-            <th scope="col" className="text-center p-2">
-              <button id="clear-btn" type="button" className="btn btn-link text-ternary" onClick={ () => reset() }>
-                Clear Filters
+            <th scope="col" className="text-center">
+              <button id="reset-btn" type="button" className="btn text-ternary" onClick={ () => reset() }>
+                Reset
               </button>
             </th>
           </tr>

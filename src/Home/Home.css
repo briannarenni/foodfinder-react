@@ -20,17 +20,16 @@ thead:after {
   border-bottom: 1px solid var(--light);
 }
 
-#clear-btn {
-  font-size: 18px;
-  text-decoration: none;
+#reset-btn {
+  font-size: 22px;
   letter-spacing: normal;
 }
 
-#clear-btn:hover {
+#reset-btn:hover {
   color: var(--ternary);
   font-weight: bold;
 }
 
-#clear-btn:active {
+#reset-btn:active {
   color: var(--secondary) !important;
 }

@@ -25,29 +25,31 @@ function MenuModal({ restInfo }) {
 
   return (
     <>
-      <Button variant="primary" id="see-menu-btn"
-        onClick={handleShow}
-        disabled={restInfo.Grade === 'F'}>
-        Menu
-      </Button>
+      { restInfo.Grade !== 'F' &&
+        (<Button variant="primary"
+          className="see-menu-btn px-3 py-1"
+          onClick={ handleShow }>
+          Menu
+        </Button>)
+      }
 
-      <Modal show={show} onHide={handleClose} size="lg" backdrop="static">
+      <Modal show={ show } onHide={ handleClose } size="lg" backdrop="static">
         <Modal.Header closeButton variant="white">
-          <Modal.Title className="text-secondary">{restInfo.RestName} - {restInfo.City}</Modal.Title>
+          <Modal.Title className="text-secondary">{ restInfo.RestName } - { restInfo.City }</Modal.Title>
         </Modal.Header>
-        <Modal.Body apps={apps} entrees={entrees} className="px-4">
+        <Modal.Body apps={ apps } entrees={ entrees } className="px-4">
           <div>
             <table className="table table-borderless text-white">
               <tbody>
                 <tr id="lead" className="lead">
                   <td>Appetizers</td>
                 </tr>
-                {apps.map((item, index) => (
-                  <tr key={index}>
-                    <td className="col-10">{item.ItemName}</td>
-                    <td className="col-2">{item.ItemPrice}</td>
+                { apps.map((item, index) => (
+                  <tr key={ index }>
+                    <td className="col-10">{ item.ItemName }</td>
+                    <td className="col-2">{ item.ItemPrice }</td>
                   </tr>
-                ))}
+                )) }
               </tbody>
             </table>
             <table className="table table-borderless text-white">
@@ -55,18 +57,18 @@ function MenuModal({ restInfo }) {
                 <tr id="lead" className="lead">
                   <td>Entrees</td>
                 </tr>
-                {entrees.map((item, index) => (
-                  <tr key={index}>
-                    <td className="col-10">{item.ItemName}</td>
-                    <td className="col-2">{item.ItemPrice}</td>
+                { entrees.map((item, index) => (
+                  <tr key={ index }>
+                    <td className="col-10">{ item.ItemName }</td>
+                    <td className="col-2">{ item.ItemPrice }</td>
                   </tr>
-                ))}
+                )) }
               </tbody>
             </table>
           </div>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" className="btm-btn-close" onClick={handleClose}>Close</Button>
+          <Button variant="primary" className="btm-btn-close" onClick={ handleClose }>Close</Button>
         </Modal.Footer>
       </Modal>
     </>
