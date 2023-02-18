@@ -25,12 +25,13 @@ function MenuModal({ restInfo }) {
 
   return (
     <>
-      { restInfo.Grade !== 'F' &&
-        (<Button variant="primary"
+      { restInfo.Grade !== 'F' && (
+        <Button variant="primary"
           className="see-menu-btn px-3 py-1"
           onClick={ handleShow }>
           Menu
-        </Button>)
+        </Button>
+      )
       }
 
       <Modal show={ show } onHide={ handleClose } size="lg" backdrop="static">

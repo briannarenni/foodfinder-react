@@ -40,11 +40,12 @@ function Home({ data }) {
   };
 
   const navProps = { reset, sortBy, filterBy, selectedCuisine, selectedCity, selectedSort, setSelectedSort, setSelectedCuisine, setSelectedCity };
+  const resultsProps = { restaurants, reset }
 
   return (
     <div>
       <Navbar { ...navProps } />
-      <Results restaurants={ restaurants } reset={ reset } />
+      <Results { ...resultsProps } />
     </div>
   );
 }

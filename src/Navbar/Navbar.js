@@ -1,6 +1,7 @@
-import { React, useState, useEffect } from 'react';
+import { React, useEffect } from 'react';
 import './Navbar.css';
-import { NavbarView } from './NavbarView.jsx';
+import { cuisineFilters, cityFilters, sortFilters } from '../_services/Models';
+import { CuisineDrop, CityDrop, SortByDrop } from '../Components.module';
 
 function Navbar(navProps) {
   const { sortBy, filterBy } = navProps;
@@ -29,7 +30,22 @@ function Navbar(navProps) {
 
   const props = { selectedSort, selectedCuisine, selectedCity, onSortSelection, onCuisineSelection, onCitySelection };
 
-  return <NavbarView { ...props } />;
+  return (
+    <>
+      <nav className="d-flex justify-content-between m-0 px-1">
+        <div id="title" className="h1">Food Finder App</div>
+        <div className="nav-btns">
+
+          <CuisineDrop selectedCuisine={ selectedCuisine } onCuisineSelection={ onCuisineSelection }
+            cuisineFilters={ cuisineFilters } />
+
+          <CityDrop selectedCity={ selectedCity } onCitySelection={ onCitySelection } cityFilters={ cityFilters } />
+
+          <SortByDrop selectedSort={ selectedSort } onSortSelection={ onSortSelection } sortFilters={ sortFilters } />
+        </div>
+      </nav>
+    </>
+  );
 }
 
 export default Navbar;
